@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import {Text, View, TextInput, TouchableOpacity, FlatList, Alert} from 'react-native';
 import {connect} from 'react-redux';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
-import {white} from '../utils/colors';
 import {receiveDecks, removeDeck} from '../actions/Deck';
-import moduleName from '../reducers/Deck';
 import {fetchCardResults} from '../utils/api';
+import styles from '../utils/styles';
 
 
 class Main extends Component {
 
   componentDidMount() {
     fetchCardResults().then(results => 
-      receiveDecks(results)
+      this.props.receiveDecks(results)
     );
   }
   
-  renderItem(item) {
+  renderItem({item}) {
     return
     <View>
       {console.log(item)}
@@ -27,23 +26,24 @@ class Main extends Component {
 
   render() {
 
-    const {decks} = this.props;
-    console.log(decks);
+    const {Decks} = this.props;
+    // console.log(decks);
+    console.log(this.props);
     return (
       <View>
         <FlatList
-          data={decks}
-          renderItem={({item})=>this.renderItem(item)}
+          data={Decks}
+          renderItem={({item})=>this.renderItem({item})}
         />
-        
+        <Text>AAA</Text>
       </View>
     );
   }
 }
 
-function mapStateToProps (decks){
+function mapStateToProps (state){
   return{
-    decks: decks
+    Decks: state.Deck
   }
 }
 
