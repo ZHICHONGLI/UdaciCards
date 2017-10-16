@@ -6,7 +6,7 @@ export function fetchCardResults() {
     .then(formatCardResults);
 };
 
-export function submitEntry ({ entry, key }) {
+export function submitEntry ({ key, entry }) {
   return AsyncStorage.mergeItem(CARD_STORAGE_KEY, JSON.stringify({
     [key]: entry
   }))
