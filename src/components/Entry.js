@@ -6,6 +6,7 @@ import {StackNavigator, TabNavigator} from 'react-navigation';
 import reducer from '../reducers';
 import Main from './Main';
 import NewDeck from './NewDeck';
+import DeckView from './DeckView';
 import styles from '../utils/styles';
 import {Ionicons} from '@expo/vector-icons';
 
@@ -30,6 +31,19 @@ const Navigator = TabNavigator({
   }
 });
 
+const StackNavigators = StackNavigator({
+  Home: {
+    screen: Navigator,
+    navigationOptions: {header: null}
+  },
+  DeckView: {
+    screen: DeckView,
+    navigationOptions: {
+
+    }
+  }
+});
+
 class App extends React.Component {
   componentDidMount () {
     // setLocalNotification()
@@ -42,7 +56,7 @@ class App extends React.Component {
           <View style={styles.StatusBar}>
             <StatusBar translucent/>
           </View>
-          <Navigator/>          
+          <StackNavigators/>
         </View>
       </Provider>
     )

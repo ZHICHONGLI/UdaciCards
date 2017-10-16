@@ -17,8 +17,11 @@ class Main extends Component {
   
   _renderItem = ({item}) => (    
     <View style={styles.deckItem}>
-      <Text>{item.title}</Text>
-      <Text>{item.questions.length} cards</Text>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', item)}>
+        <Text style={styles.deckHeader}>{item.title}</Text>
+        <Text style={styles.deckBody}>{item.questions.length} cards</Text>
+      </TouchableOpacity>
+      
     </View>
   );
 
@@ -29,13 +32,13 @@ class Main extends Component {
       result.push(Decks[id]);
       return result
     }, []);
-    console.log(_Decks);
     return (
       <View>
         <FlatList
           data={_Decks}
           renderItem={this._renderItem}
           keyExtractor={(item, index) => index}
+          style={styles.FlatList}
         />
       </View>
     );

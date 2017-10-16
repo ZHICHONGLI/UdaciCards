@@ -48,6 +48,41 @@ export default styles = StyleSheet.create({
     padding: 10,
     backgroundColor: gray,
     borderRadius: 5,
+    borderColor: orange,
+    borderWidth: 1,
     justifyContent: 'center'
+  },
+  deckHeader:{
+    fontSize: 22
+  },
+  deckBody: {
+    color: lightPurp
+  },
+  FlatList: {
+    paddingBottom: 200
+  },
+
+  // DeckView
+  DeckViewContainer: {
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+    },
+  DeckViewTitle: {
+    fontSize: 30,
+    color: lightPurp
+  },
+  DeckViewQues: {
+    paddingTop:5,
+    fontSize: 15
+  },
+  DeckViewActions: {
+    flex: 1,
+    marginTop: 150,
+    flexDirection: 'row'
+  },
+  DeckViewBtn: {
+    margin: 50
   }
+
 });
