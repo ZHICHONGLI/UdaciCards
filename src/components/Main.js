@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Text, View, TextInput, TouchableOpacity, FlatList, Alert} from 'react-native';
 import {connect} from 'react-redux';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
-import {receiveDecks, removeDeck} from '../actions/Deck';
+import {receiveDecks} from '../actions/Deck';
 import {fetchCardResults} from '../utils/api';
 import styles from '../utils/styles';
 
@@ -15,27 +15,28 @@ class Main extends Component {
     );
   }
   
-  renderItem({item}) {
-    return
-    <View>
-      {console.log(item)}
+  _renderItem = ({item}) => (    
+    <View style={styles.deckItem}>
       <Text>{item.title}</Text>
-      <Text>{item.questuons.length} cards</Text>
+      <Text>{item.questions.length} cards</Text>
     </View>
-  }
+  );
 
   render() {
 
     const {Decks} = this.props;
-    // console.log(decks);
-    console.log(this.props);
+    const _Decks = Object.keys(Decks).reduce((result, id) => {
+      result.push(Decks[id]);
+      return result
+    }, []);
+    console.log(_Decks);
     return (
       <View>
         <FlatList
-          data={Decks}
-          renderItem={({item})=>this.renderItem({item})}
+          data={_Decks}
+          renderItem={this._renderItem}
+          keyExtractor={(item, index) => index}
         />
-        <Text>AAA</Text>
       </View>
     );
   }
@@ -43,11 +44,11 @@ class Main extends Component {
 
 function mapStateToProps (state){
   return{
-    Decks: state.Deck
+    Decks: state
   }
 }
 
 export default connect(
   mapStateToProps,
-  {receiveDecks, removeDeck}
+  {receiveDecks}
 )(Main);

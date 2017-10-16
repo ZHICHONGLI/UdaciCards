@@ -8,6 +8,11 @@ class NewDeck extends Component {
   state = {
     input: ''
   };
+  addDeck = () => {
+    const {decks} = this.props;
+    console.log(this.state.input);
+    console.log(decks);
+  };
   render() {
     return (
       <KeyboardAvoidingView style={styles.addView}>
@@ -21,7 +26,7 @@ class NewDeck extends Component {
           title='Add'
           color={orange}
           style={styles.addBtn}
-          onPress={()=>console.log(this.state.input)}
+          onPress={this.addDeck}
         />
       </KeyboardAvoidingView>
     );
@@ -30,7 +35,7 @@ class NewDeck extends Component {
 
 function mapStateToProps(state) {
   return {
-    decks: state
+    decks: state.deck
   }
 }
 export default connect(mapStateToProps)(NewDeck);

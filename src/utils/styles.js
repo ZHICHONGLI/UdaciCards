@@ -40,5 +40,14 @@ export default styles = StyleSheet.create({
     borderColor: orange,
     borderWidth: 2,
     borderRadius: 5
+  },
+
+  // Main View
+  deckItem: {
+    margin: 10,
+    padding: 10,
+    backgroundColor: gray,
+    borderRadius: 5,
+    justifyContent: 'center'
   }
 });
