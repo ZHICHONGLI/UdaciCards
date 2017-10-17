@@ -14,7 +14,16 @@ function Decks(state={}, action) {
       }
       return state;
     case RECEIVE_DECKS:
-      return {...state, ...action.decks}
+      return {...state, ...action.decks};
+    case ADD_CARD:
+      const {title, questions, question, answer} = action;
+      
+
+      state = {
+        ...state,
+        [title]: {...state[title], questions: [...questions, {question: question, answer: answer}]}
+      }
+      return state;
     default:
     return state
   }

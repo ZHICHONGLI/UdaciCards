@@ -11,8 +11,6 @@ class NewDeck extends Component {
   };
   addDeck = () => {
     const {decks} = this.props;
-    // console.log(this.state.input);
-    // console.log(decks);
     const {input} = this.state;
     if(decks[input]){
       return Alert.alert('Duplicate Deck! Please use other names.')

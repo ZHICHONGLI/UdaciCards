@@ -16,7 +16,7 @@ class DeckView extends Component {
             <Button
               title='Quiz'
               onPress={() => {
-                this.props.navigation.navigator('Quiz', {title, questions})
+                this.props.navigation.navigate('Quiz', {title, questions})
               }}
             />
           </View>
@@ -24,7 +24,7 @@ class DeckView extends Component {
             <Button
               title='Add Card'
               onPress={() => {
-                this.props.navigation.navigator('AddCard', {title, questions})
+                this.props.navigation.navigate('AddCard', {title, questions})
               }}
             />
           </View>

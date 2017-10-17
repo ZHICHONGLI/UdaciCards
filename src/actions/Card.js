@@ -1,8 +1,11 @@
 export const ADD_CARD = 'ADD_CARD';
 
-export function addCard(card) {
+export function addCard({title, questions, question, answer}) {
   return {
     type: ADD_CARD,
-    card
+    title,
+    questions,
+    question,
+    answer
   }
 }

@@ -83,6 +83,27 @@ export default styles = StyleSheet.create({
   },
   DeckViewBtn: {
     margin: 50
+  },
+
+  // AddCard View
+  AddCardContainer: {
+    padding: 10,
+    marginTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  AddCardText: {
+    fontSize: 20
+  },
+  AddCardInput: {
+    width: 300,
+    height: 50,
+    margin: 15,
+    padding: 5,
+    borderColor: orange,
+    borderWidth: 2,
+    borderRadius: 5
   }
+
 
 });

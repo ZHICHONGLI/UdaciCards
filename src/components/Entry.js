@@ -7,6 +7,7 @@ import reducer from '../reducers';
 import Main from './Main';
 import NewDeck from './NewDeck';
 import DeckView from './DeckView';
+import AddCard from './AddCard';
 import styles from '../utils/styles';
 import {Ionicons} from '@expo/vector-icons';
 
@@ -40,6 +41,12 @@ const StackNavigators = StackNavigator({
     screen: DeckView,
     navigationOptions: {
 
+    }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      header: null
     }
   }
 });
