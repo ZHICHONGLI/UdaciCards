@@ -11,6 +11,7 @@ export const lightPurp = '#7c53c3'
 export const pink = '#b93fb3'
 export const black = '#000000'
 export const lightBlue = '#dbe8f9'
+export const green = '#2fa311'
 
 export default styles = StyleSheet.create({
   container: {
@@ -103,6 +104,31 @@ export default styles = StyleSheet.create({
     borderColor: orange,
     borderWidth: 2,
     borderRadius: 5
+  },
+
+  // QuizView
+  QuizViewContainer: {
+    padding: 10,
+    alignItems: 'center',
+    flex: 1
+  },
+  QuizQuestion: {
+    marginTop: 80,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  QuizBody: {
+    fontSize: 25
+  },
+  QuizBtnC: {
+    width: 200,
+    height: 150,
+    marginTop: 100
+  },
+  QuizBtnC: {
+    width: 200,
+    height: 100,
+    marginTop: 100
   }
 
 
