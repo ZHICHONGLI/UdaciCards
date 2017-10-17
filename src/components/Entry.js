@@ -8,6 +8,7 @@ import Main from './Main';
 import NewDeck from './NewDeck';
 import DeckView from './DeckView';
 import AddCard from './AddCard';
+import QuizView from './QuizView';
 import styles from '../utils/styles';
 import {Ionicons} from '@expo/vector-icons';
 
@@ -45,6 +46,12 @@ const StackNavigators = StackNavigator({
   },
   AddCard: {
     screen: AddCard,
+    navigationOptions: {
+      header: null
+    }
+  },
+  QuizView: {
+    screen: QuizView,
     navigationOptions: {
       header: null
     }
