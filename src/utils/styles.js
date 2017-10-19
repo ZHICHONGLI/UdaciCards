@@ -123,13 +123,15 @@ export default styles = StyleSheet.create({
   QuizBtnC: {
     width: 200,
     height: 150,
-    marginTop: 100
+    marginTop: 250
   },
-  QuizBtnC: {
+  QuizBtnW: {
     width: 200,
     height: 100,
-    marginTop: 100
+    marginTop: 50
+  },
+  QuizRate: {
+    marginTop: 35,
+    fontSize: 20
   }
-
-
 });
