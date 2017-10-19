@@ -11,6 +11,7 @@ import AddCard from './AddCard';
 import QuizView from './QuizView';
 import styles from '../utils/styles';
 import {Ionicons} from '@expo/vector-icons';
+import {setLocalNotification} from '../utils/_card';
 
 const Navigator = TabNavigator({
   Home: {
@@ -60,7 +61,7 @@ const StackNavigators = StackNavigator({
 
 class App extends React.Component {
   componentDidMount () {
-    // setLocalNotification()
+    setLocalNotification()
   }
 
   render () {

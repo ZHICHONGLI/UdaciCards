@@ -1,6 +1,8 @@
 import {AsyncStorage} from 'react-native';
+import { Notifications, Permissions } from 'expo';
 
 export const CARD_STORAGE_KEY = 'UdaciCards:card';
+export const NOTIFICATION_KEY = 'UdaciCards:notifications';
 
 function setDummyData () {
   const dummyData = {
@@ -40,3 +42,52 @@ export function formatCardResults (results) {
     ? setDummyData()
     : JSON.parse(results)
 }
+
+function createNotification () {
+  return {
+    title: 'Go Study',
+    body: 'Go Quiz',
+    ios: {
+      sound: true,
+    },
+    android: {
+      sound: true,
+      priority: 'high',
+      sticky: false,
+      vibrate: true,
+    }
+  };
+}
+
+export function clearLocalNotification () {
+  return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
+    Notifications.cancelAllScheduledNotificationsAsync
+  );
+}
+
+export function setLocalNotification () {
+  console.disableYellowBox = true;
+  AsyncStorage.getItem(NOTIFICATION_KEY)
+    .then(JSON.parse)
+    .then(data => {
+      if (data === null) {
+        Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
+          if (status === 'granted') {
+            Notifications.cancelAllScheduledNotificationsAsync();
+
+            let tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(20);
+            Notifications.scheduledLocalNotificationsAsync(
+              createNotification(),
+              {
+                time: tomorrow,
+                repeat: 'day'
+              }
+            );s
+            AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true))
+          }
+        })
+      }
+    })
+  }
