@@ -11,17 +11,14 @@ class AddCard extends Component {
     answerInput: ''
   };
   saveCaed = () => {
-    const {title, questions} = this.props.navigation.state.params;
+    let {title, questions} = this.props.navigation.state.params;
     const {questionInput, answerInput} = this.state;
-    this.props.dispatch(addCard({title, questions, questionInput, answerInput}));
-    const newQuestions = questions.push({question: questionInput, answer: answerInput});
-    submitEntry({
-      key: title,
-      entry: {
-        title,
-        questions: newQuestions
-      }
-    });
+    this.props.dispatch(addCard({title, questions, question:questionInput, answer:answerInput}));
+
+    const newQuestions = [...questions, {question: questionInput, answer: answerInput}];
+    const entry = {title: title, questions: newQuestions};
+    submitEntry({key: title, entry: {title: title, questions: newQuestions}});
+
     this.setState({
       questionInput: '',
       answerInput: ''
@@ -35,14 +32,14 @@ class AddCard extends Component {
         <Text style={styles.AddCardText}>Qustion:</Text>
         <TextInput
           style={styles.AddCardInput}
-          value={questionInput}
-          onChange={text => this.setState({questionInput: text})}
+          value={this.state.questionInput}
+          onChangeText={text => this.setState({questionInput: text})}
         />
         <Text style={styles.AddCardText}>Answer:</Text>
         <TextInput
           style={styles.AddCardInput}
-          value={answerInput}
-          onChange={text => this.setState({answerInput: text})}
+          value={this.state.answerInput}
+          onChangeText={text => this.setState({answerInput: text})}
         />
         <Button
           title='Add'
