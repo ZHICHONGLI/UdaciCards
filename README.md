@@ -24,3 +24,4 @@ Swipe from left to right on screen to go back to last view
 
 ### Device compatible
 Tested with iPhone 6s and iOS simulator iPhone x @11.0 
+iOS ONLY...
