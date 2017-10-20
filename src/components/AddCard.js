@@ -10,7 +10,7 @@ class AddCard extends Component {
     questionInput: '',
     answerInput: ''
   };
-  saveCaed = () => {
+  saveCard = () => {
     let {title, questions} = this.props.navigation.state.params;
     const {questionInput, answerInput} = this.state;
     this.props.dispatch(addCard({title, questions, question:questionInput, answer:answerInput}));
@@ -43,7 +43,7 @@ class AddCard extends Component {
         />
         <Button
           title='Add'
-          onPress={this.saveCaed}
+          onPress={this.saveCard}
           disabled={!(questionInput&&answerInput)}
         />
       </KeyboardAvoidingView>
